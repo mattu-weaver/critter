@@ -29,6 +29,16 @@ class Creature:
         pygame.draw.rect(self.screen, colour, (self.x, self.y, 10, 10))
 
 
+    def update(self):
+        self.draw(self.cfg["ENV"]["background"])
+        if self.is_alive():
+            self.move()
+            self.draw(self.cfg["CREATURE"]["colour"])
+
+        if self.energy < self.cfg["CREATURE"]["low_energy_limit"]:
+            self.health -= self.cfg["CREATURE"]["health_energy_reduction"]
+
+
     def calculate_speed(self):
         """Calculate the creature's speed based on energy and mass."""
         if self.mass > 0:
@@ -47,8 +57,8 @@ class Creature:
             new_y = self.y + dy
 
             # Ensure the creature doesn't move out of bounds
-            self.x = max(0, min(new_x, self.width))   # Clamp x between 0 and SCREEN_WIDTH
-            self.y = max(0, min(new_y, self.height))  # Clamp y between 0 and SCREEN_HEIGHT
+            self.x = max(0, min(new_x, self.width))
+            self.y = max(0, min(new_y, self.height))
 
             # Reduce energy with each move
             if not self.cfg["CREATURE"]["infinite_energy"]:
