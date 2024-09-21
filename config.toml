@@ -1,0 +1,12 @@
+[CREATURE]  
+infinite_energy = true
+speed_factor = 20
+colour = [255, 255, 255]
+
+[ENV]
+loop_delay = 100
+creature_count = 2
+background = [0, 0, 0]
+scr_width = 1200
+scr_height = 900
+
