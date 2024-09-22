@@ -1,5 +1,5 @@
 [CREATURE]  
-infinite_energy = true
+infinite_energy = false
 age_factor = 0.4
 old_age = 70
 colour = [255, 255, 255]
@@ -11,15 +11,17 @@ mass = [8, 1]
 energy = [100, 6]
 health = [100, 4]
 speed_factor = 4
+max_energy = [150, 10]
 
 [FOOD]
 size = [20, 6]
 colour = [0, 255, 0] 
 
 [ENV]
-loop_delay = 1000
-creature_count = 1
-food_count = 300
+loop_delay = 50
+creature_count = 30
+food_count = 100
 background = [0, 0, 0]
 scr_width = 1200
 scr_height = 900
+loops_before_food = 1

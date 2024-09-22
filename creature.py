@@ -32,6 +32,7 @@ class Creature:
         self.age_factor = self.cfg["age_factor"]
         self.old_age = self.cfg["old_age"]
         self.speed = self.calculate_speed()
+        self.max_energy = ut.get_rnd_norm(self.cfg["max_energy"][0], self.cfg["max_energy"][1])
 
 
     def set(self):
@@ -135,6 +136,10 @@ class Creature:
         The creature eats the food.
         """
         self.energy += food.size
+
+        if self.energy > self.max_energy:
+            self.energy = self.max_energy
+
         #self.health += food.health
         #self.mass += food.mass
         self.calculate_speed()

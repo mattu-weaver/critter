@@ -1,8 +1,18 @@
+"""
+This file contains the Food class.
+"""
 import random
-import utils as ut
 import pygame
+import utils as ut
+
 
 class Food:
+    """
+    Represents an item of food in the simulation.
+    f_id: int - the unique identifier for the food item
+    cfg: dict - the configuration dictionary
+    screen: pygame.Surface - the screen object
+    """
     def __init__(self, f_id, cfg, screen):
         self.f_id = f_id
         self.screen = screen
@@ -14,17 +24,21 @@ class Food:
         self.colour = self.cfg["colour"]
 
     def draw(self, colour):
+        """
+        Draw the food item on the screen.
+        colour: tuple - the RGB colour of the food item
+        """
         pygame.draw.circle(self.screen, colour, (int(self.x), int(self.y)), self.size)
 
     def set(self):
         """
-        Draw a creature on the screen.
+        Draw food on the screen.
         """
         self.draw(self.colour)
 
 
     def clear(self):
         """
-        Clear the creature from the screen.
+        Clear food from the screen.
         """
         self.draw(self.env["background"]) 

@@ -57,7 +57,20 @@ def initialise_simulation():
     return food_items, critter_list
 
 
+def respawn_food(passes, food_items):
+    """
+    Respawn food items that have been eaten.
+    """
+    if passes % cfg_e["loops_before_food"] == 0:
+        for _ in range(12):
+            food_items.append(Food(f_id = len(food_items), cfg=cfg, screen=screen))
+
+    return food_items
+
+
 food_list, creature_list = initialise_simulation()
+
+loops = 30
 
 
 # The main simulation loop
@@ -81,6 +94,9 @@ while True:
         else:
             creature.clear()
             creature_list.remove(creature)
+
+    food_list = respawn_food(loops, food_list)
+    loops += 1
 
     pygame.time.wait(cfg_e["loop_delay"])
     pygame.display.update()
